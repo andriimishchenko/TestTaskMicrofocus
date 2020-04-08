@@ -5,23 +5,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.Calendar;
 
-public class MainPage {
+public class MainPage extends BasePage{
 
-    private WebDriver driver;
-
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    @FindBy(xpath = "//*[@id=\"user_form\"]/ul/li[2]")
+    @FindBy(xpath = ".//li[@data-id=\"language_selector\"]/a")
     private WebElement langListBtn;
 
-    @FindBy(xpath = "//*[@id=\"user_form\"]/ul/li[1]")
+    @FindBy(xpath = ".//li[@data-id=\"currency_selector\"]/a")
     private WebElement currListBtn;
 
     @FindBy(id = "ss")
@@ -78,13 +73,21 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]")
     private WebElement submitBtn;
 
-    public void selectLang(WebElement langEnUS){
-        langListBtn.click();
-        langEnUS.click();
+
+
+
+
+    public MainPage(WebDriver driver) {
+        super(driver);
     }
-    public void selectCur(WebElement currEuro){
+
+    public void selectLang(String lang){
+        langListBtn.click();
+        driver.findElement(By.xpath(".//li[@class=\"lang_"+lang+"\"]")).click();
+    }
+    public void selectCur(String curr){
         currListBtn.click();
-        currEuro.click();
+        driver.findElement(By.xpath(".//li[@data-lang=\""+curr+"\"]")).click();
     }
     public void inputDestination(String location){
         inputDestination.clear();

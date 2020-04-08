@@ -7,11 +7,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ResPage {
-    private WebDriver driver;
+public class ResPage extends BasePage{
 
     public ResPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void verifyResults(){
