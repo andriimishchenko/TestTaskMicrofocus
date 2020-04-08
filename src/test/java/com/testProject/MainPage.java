@@ -114,7 +114,7 @@ public class MainPage extends BasePage{
     }
     public void selectAddOptions(int adults, int children, int rooms, String childrenAge) throws InterruptedException {
         otherOptions.click();
-        System.out.println(Integer.parseInt(adultsCount.getText()));
+
         //Adults
         while(Integer.parseInt(adultsCount.getText())!=adults){
             if(Integer.parseInt(adultsCount.getText())>adults) minAdultsBtn.click();
@@ -125,7 +125,7 @@ public class MainPage extends BasePage{
         //Children
         while(Integer.parseInt(childCount.getText())!=children){
             if(Integer.parseInt(childCount.getText())>children) minChildBtn.click();
-            else maxAdultsBtn.click();
+            else maxChildBtn.click();
             Thread.sleep(2000);
         }
 
