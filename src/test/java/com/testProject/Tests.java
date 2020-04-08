@@ -8,6 +8,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class Tests{
     private WebDriver driver;
@@ -35,11 +37,11 @@ public class Tests{
     @BeforeTest
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-
         driver = new ChromeDriver();
         //driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get(url);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @AfterTest

@@ -112,24 +112,28 @@ public class MainPage extends BasePage{
         lastDayOfCurrMonth.click();
         firstDayOfNextMonth.click();
     }
-    public void selectAddOptions(int adults, int children, int rooms, String childrenAge){
+    public void selectAddOptions(int adults, int children, int rooms, String childrenAge) throws InterruptedException {
         otherOptions.click();
+        System.out.println(Integer.parseInt(adultsCount.getText()));
         //Adults
         while(Integer.parseInt(adultsCount.getText())!=adults){
             if(Integer.parseInt(adultsCount.getText())>adults) minAdultsBtn.click();
             else maxAdultsBtn.click();
+            Thread.sleep(2000);
         }
 
         //Children
         while(Integer.parseInt(childCount.getText())!=children){
             if(Integer.parseInt(childCount.getText())>children) minChildBtn.click();
             else maxAdultsBtn.click();
+            Thread.sleep(2000);
         }
 
         //Rooms
         while(Integer.parseInt(roomCount.getText())!=rooms){
             if(Integer.parseInt(roomCount.getText())>rooms) minRoomBtn.click();
             else maxRoomBtn.click();
+            Thread.sleep(2000);
         }
 
         //Children Age
