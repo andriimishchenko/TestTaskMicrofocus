@@ -112,16 +112,17 @@ public class Tests {
         }
     @Test
     public void testis2() throws InterruptedException {
-    /*
-        List<WebElement> listOfResults = driver.findElements(By.className("sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout"));
-        for (WebElement elem:listOfResults) {
-            if(Float.parseFloat(elem.getAttribute("data-score"))>8.1&&driver.findElement(By.className("bui-u-sr-only"))){
 
-            }
+        List<WebElement> listOfResults = driver.findElements(By.xpath(".//div[@class=\"sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout          \"]"));
+        for (WebElement elem:listOfResults) {
+            String substring=elem.findElement(By.xpath(".//*[@class=\"bui-price-display__value prco-inline-block-maker-helper\"]")).getText().substring(2);
+            int price=Integer.parseInt(substring);
+            if(Float.parseFloat(elem.getAttribute("data-score"))>8.1&&price<205){
+                System.out.println("Test passed");
+               break;
+           }
         }
 
-
-    */
         }
 
         @AfterTest
