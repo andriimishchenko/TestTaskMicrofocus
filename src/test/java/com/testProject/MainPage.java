@@ -1,5 +1,6 @@
 package com.testProject;
 
+import com.google.common.base.Verify;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,14 +21,8 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"user_form\"]/ul/li[2]")
     private WebElement langListBtn;
 
-    @FindBy(xpath = ".//li[@class=\"lang_en-us\"]")
-    private WebElement langEnUS;
-
     @FindBy(xpath = "//*[@id=\"user_form\"]/ul/li[1]")
     private WebElement currListBtn;
-
-    @FindBy(xpath = ".//li[@class=\"currency_EUR\"]")
-    private WebElement currEuro;
 
     @FindBy(id = "ss")
     private WebElement inputDestination;
@@ -83,11 +78,11 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]")
     private WebElement submitBtn;
 
-    public void selectLang(){
+    public void selectLang(WebElement langEnUS){
         langListBtn.click();
         langEnUS.click();
     }
-    public void selectCur(){
+    public void selectCur(WebElement currEuro){
         currListBtn.click();
         currEuro.click();
     }
@@ -135,9 +130,10 @@ public class MainPage {
         }
 
         //Children Age
-        Select select = new Select(childAgeSelection);
-        select.selectByVisibleText(childrenAge);
-
+        if (childAgeSelection.isDisplayed()) {
+            Select select = new Select(childAgeSelection);
+            select.selectByVisibleText(childrenAge);
+        }
     }
     public void submitRes(){
         if (workOption.isSelected())submitBtn.click();
