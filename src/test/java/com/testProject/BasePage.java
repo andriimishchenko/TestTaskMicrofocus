@@ -6,9 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class BasePage {
     protected WebDriver driver;
 
-    //This is my comments
-    //this is my second comment
-    //this is my comment for QA DEmo needs
+    //comments from QA Group 24.10.2021
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
